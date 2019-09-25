@@ -16,13 +16,20 @@ inline Point2d_type SwapPointXY(const Point2d_type& pt) {
   return Point2d_type(pt.y, pt.x);
 }
 
-/* path smooth */
-bool PathSmooth(int col, const std::list<CellPosState>& path,
-                std::vector<DrawPathPos>& final_path);
+/* car path smooth */
+bool CarPathSmooth(int col, const std::list<CellPosState>& path,
+                   std::vector<DrawPathPos>& final_path);
 
+void PrePartInterpoletion(const DrawPathPos& start, const DrawPathPos& end,
+                          std::vector<DrawPathPos>& final_path,
+                          int pre_part_num);
 /* 直线路段 插值 */
-void PathInterpoletion(const DrawPathPos& start, const DrawPathPos& end,
-                       int size, int pre_part_num,
+void PathInterpoletion(int start, int end, int pre_part_num,
+                       const std::vector<DrawPathPos>& path,
                        std::vector<DrawPathPos>& final_path);
+
+/* path smooth */
+bool PathSmooth(const std::vector<DrawPathPos>& prime_path,
+                std::vector<DrawPathPos>& final_path);
 
 #endif

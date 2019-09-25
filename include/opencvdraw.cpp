@@ -10,7 +10,7 @@ void DrawWholeMap(int num, int row, int col, const Point2i_type& start,
 
   /* Path smooth bezier curve */
   std::vector<DrawPathPos> final_path;
-  PathSmooth(col, path, final_path);
+  CarPathSmooth(col, path, final_path);
 
   while (1) {
     DrawGridMap(img, row, col, start, goal, obstacle);
