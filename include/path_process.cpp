@@ -2,7 +2,7 @@
 
 /* car path smooth */
 bool CarPathSmooth(int col, const std::list<CellPosState>& path,
-                std::vector<DrawPathPos>& final_path) {
+                   std::vector<DrawPathPos>& final_path) {
   if (path.size() < 2) {
     return false;
   }
@@ -57,10 +57,10 @@ bool PathSmooth(const std::vector<DrawPathPos>& prime_path,
       }
     }
   }
-  if (last_divide_pos == 0) {
-    PathInterpoletion(last_divide_pos, prime_path.size() - 1, PATHDIVID,
-                      prime_path, final_path);
-  }
+  
+  PathInterpoletion(last_divide_pos, prime_path.size() - 1, PATHDIVID,
+                    prime_path, final_path);
+
   final_path.push_back(prime_path.back());
 }
 
@@ -72,7 +72,6 @@ void PathInterpoletion(int start, int end, int pre_part_num,
     PrePartInterpoletion(prime_path[i], prime_path[i + 1], final_path,
                          pre_part_num);
 }
-
 
 /* 分段进行插值 */
 void PrePartInterpoletion(const DrawPathPos& start, const DrawPathPos& end,
