@@ -33,8 +33,9 @@ bool PathSmooth(int col, const std::list<CellPosState>& path,
         posset.push_back(temp_stg[i].pt);
         posset.push_back(temp_stg[i + 1].pt);
 
-        ThridOrderBezier(30 * (i - last_divide_pos - 1), posset, final_path);
-        ++i; 
+        ThridOrderBezier(4 * PATHDIVID * (i - last_divide_pos - 1), posset,
+                         final_path);
+        ++i;
         last_divide_pos = i;
         capture_flg = false;
       }
